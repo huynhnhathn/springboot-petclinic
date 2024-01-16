@@ -5,6 +5,9 @@ COPY mvnw pom.xml ./
 RUN ./mvnw dependency:resolve
 COPY src ./src
 
+FROM base as test
+CMD ["./mvnw", "test"]
+
 FROM base AS development
 CMD ["./mvnw", "spring-boot:run"]
 
