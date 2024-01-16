@@ -1,1 +1,1 @@
- Spring PetClinic Sample Applicatio
+ Spring PetClinic Sample Application
