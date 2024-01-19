@@ -1,11 +1,12 @@
 version: '3.8'
 services:
   petclinic:
+    image: petclinic_back-end_dev:latest
+    container_name: petclinic_back-end_dev
     build:
       context: .
       target: development
     ports:
-      - "8000:8000"
       - "8080:8080"
     environment:
       - SERVER_PORT=8080
@@ -16,7 +17,8 @@ services:
       - mysqlserver
 
   mysqlserver:
-    image: mysql:8.0
+    image: mysql:latest
+    container_name: petclinic_mysql_dev
     ports:
       - "3306:3306"
     environment:
@@ -26,8 +28,15 @@ services:
       - MYSQL_PASSWORD=petclinic
       - MYSQL_DATABASE=petclinic
     volumes:
-      - mysql_data:/var/lib/mysql
-      - mysql_config:/etc/mysql/conf.d
+      - mysql_data_dev:/var/lib/mysql
+      - mysql_config_dev:/etc/mysql/conf.d
+
 volumes:
-  mysql_data:
-  mysql_config:
+  mysql_data_dev:
+  mysql_config_dev:
+
+networks:
+  default:
+    # Use a custom driver
+    name: "petclinic_network_dev"
+ 
