@@ -6,18 +6,21 @@ on:
       - main
 
 jobs:
-  build:
+  build_qa:
     runs-on: petclinic-label
     steps:
       - name: Checkout
         uses: actions/checkout@v4
       - name: Build Commit
-        run: echo ${GITHUB_SHA}
+        run: echo Start Build QA Docker Image ${GITHUB_SHA}
       - name: Build Docker Image
-        run: docker build -t petclinic_back-end_dev/${GITHUB_SHA}:latest  --target development .
-  deploy:
-      runs-on: petclinic-label
-      steps:
-         - name: Update Stack Service 
-           run: docker service update --image petclinic_back-end_dev/${GITHUB_SHA}:latest petclinic_qa_petclinic
+        run: docker build -t petclinic_back-end_dev:latest  --target development .
+  deploy_qa:
+    needs: build_qa
+    runs-on: petclinic-label
+    steps:
+      - name: Start Deploy QA
+        run: docker service update --image petclinic_back-end_dev:latest petclinic-qa_petclinic
 
+  
+   
