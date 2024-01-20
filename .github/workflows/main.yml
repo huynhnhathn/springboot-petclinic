@@ -20,5 +20,5 @@ jobs:
     runs-on: petclinic-label
     steps:
       - name: Start Deploy QA
-        run: docker service update --image petclinic_back-end_dev/${GITHUB_SHA}:latest petclinic-qa_petclinic
+        run: docker service update --force --image petclinic_back-end_dev/${GITHUB_SHA}:latest petclinic-qa_petclinic
    
