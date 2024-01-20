@@ -21,6 +21,4 @@ jobs:
     steps:
       - name: Start Deploy QA
         run: docker service update --force --image petclinic_back-end_dev/${{ github.sha }}:latest petclinic_qa_petclinic
-      - name: Remove unused images
-        run: docker image prune -a -f
    
