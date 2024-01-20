@@ -15,12 +15,5 @@ jobs:
         run: echo Start Build QA Docker Image ${GITHUB_SHA}
       - name: Build Docker Image
         run: docker build -t petclinic_back-end_dev:latest  --target development .
-  deploy_qa:
-    needs: build_qa
-    runs-on: petclinic-label
-    steps:
-      - name: Start Deploy QA
-        run: docker service update --image petclinic_back-end_dev:latest petclinic-qa_petclinic
-
   
    
