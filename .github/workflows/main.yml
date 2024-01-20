@@ -12,5 +12,5 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
       - name: Build Docker Image
-        run: docker build -t petclinic_back-end_dev  --target development .
+        run: docker build -t petclinic_back-end_dev/${GITHUB_SHA}  --target development .
 
