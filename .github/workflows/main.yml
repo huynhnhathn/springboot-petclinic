@@ -12,7 +12,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
       - name: Build Commit
-        run: echo Start Build QA Docker Image ${GITHUB_SHA}
+        run: echo Start Build QA Docker Image ${{ github.sha }}
       - name: Build Docker Image
-        run: docker build -t petclinic_back-end_dev/${GITHUB_SHA}:latest  --target development .
+        run: docker build -t petclinic_back-end_dev/${{ github.sha }}:latest  --target development .
    
