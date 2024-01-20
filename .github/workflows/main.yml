@@ -14,5 +14,10 @@ jobs:
       - name: Build Commit
         run: echo ${GITHUB_SHA}
       - name: Build Docker Image
-        run: docker build -t petclinic_back-end_dev/${GITHUB_SHA}  --target development .
+        run: docker build -t petclinic_back-end_dev/${GITHUB_SHA}:latest  --target development .
+  deploy:
+      runs-on: petclinic-label
+      steps:
+         - name: Update Stack Service 
+           run: docker service update --image petclinic_back-end_dev/${GITHUB_SHA}:latest petclinic_qa_petclinic
 
