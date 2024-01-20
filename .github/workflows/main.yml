@@ -11,6 +11,8 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+      - name: Build Commit
+        run: echo ${GITHUB_SHA}
       - name: Build Docker Image
         run: docker build -t petclinic_back-end_dev/${GITHUB_SHA}  --target development .
 
