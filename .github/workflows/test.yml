@@ -18,5 +18,5 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - run: |
-            echo ${{ include[0].project }}
+            echo ${{ fromJSON(needs.job1.outputs.matrix) }}
             
