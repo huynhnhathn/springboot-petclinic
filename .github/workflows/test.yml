@@ -10,4 +10,4 @@ jobs:
     steps:
       - run: |
              GIT_PR_SHA="${{ github.sha }}"
-             echo "::debug::${GIT_PR_SHA}"
+             echo "::debug::Traning condination"
