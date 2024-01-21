@@ -20,4 +20,5 @@ jobs:
       matrix: ${{ fromJSON(needs.job1.outputs.matrix) }}
     steps:
       - run: |
-         echo "${{ fromJSON(needs.job1.outputs.matrix) }}"
+         echo LOCAL_VERSION = ${{ fromJSON(needs.job1.outputs.matrix) }} 
+         echo LOCAL_VERSION.include[0].project.foo
