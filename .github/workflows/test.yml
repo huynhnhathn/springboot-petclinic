@@ -7,6 +7,8 @@ on:
 jobs:
    job1:
     runs-on: ubuntu-latest
+    outputs:
+      matrix: ${{ steps.color-selector.outputs.SELECTED_COLOR }}
     steps:
        - name: Set color
          id: color-selector
@@ -21,6 +23,6 @@ jobs:
     needs: job1
     runs-on: ubuntu-latest
     steps:
-      - run: echo "The job 2 selected color is $SELECTED_COLOR"
+      - run: echo "The job 2 selected color is ${{ steps.color-selector.outputs.SELECTED_COLOR }}"
     
         
