@@ -16,9 +16,6 @@ jobs:
   job2:
     needs: job1
     runs-on: ubuntu-latest
-    strategy:
-      matrix: ${{ fromJSON(needs.job1.outputs.matrix) }}
     steps:
       - run: |
-         echo LOCAL_VERSION = ${{ fromJSON(needs.job1.outputs.matrix) }} 
-         echo $LOCAL_VERSION.include[0].project
+         echo  ${{ needs.job1.outputs.matrix }}
