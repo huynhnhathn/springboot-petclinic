@@ -12,7 +12,7 @@ jobs:
     steps:
        - name: Set color
          id: color-selector
-         run: echo "SELECTED_COLOR=green" >> "$GITHUB_OUTPUT"
+         run: echo "SELECTED_COLOR=red" >> "$GITHUB_OUTPUT"
          
        - name: Get color
          id: step_two
