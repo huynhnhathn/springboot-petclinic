@@ -21,4 +21,4 @@ jobs:
     steps:
       - run: |
          echo LOCAL_VERSION = ${{ fromJSON(needs.job1.outputs.matrix) }} 
-         echo LOCAL_VERSION.include[0].project
+         echo ${{LOCAL_VERSION.include[0].project}}
