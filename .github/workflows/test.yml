@@ -1,1 +1,14 @@
+name: build
 
+on:
+ push:
+   branches:
+     - main
+jobs:
+  build_qa:
+     runs-on: ubuntu-latest
+     outputs:
+      matrix: ${{ steps.set-matrix.outputs.matrix }}
+     steps:
+      - id: set-matrix
+        run: echo "matrix={\"include\":[{\"project\":\"foo\",\"config\":\"Debug\"},{\"project\":\"bar\",\"config\":\"Release\"}]}" >> $GITHUB_OUTPUT
