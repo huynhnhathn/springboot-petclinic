@@ -18,6 +18,5 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - run: |
-            text = "hello"
-            echo $text
+            echo ${{ include[0].project }}
             
