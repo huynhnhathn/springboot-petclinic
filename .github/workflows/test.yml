@@ -17,4 +17,10 @@ jobs:
          env:
           SELECTED_COLOR: ${{ steps.color-selector.outputs.SELECTED_COLOR }}
          run: echo "The selected color is $SELECTED_COLOR"
+   job2:
+    needs: job1
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "The job 2 selected color is $SELECTED_COLOR"
+    
         
