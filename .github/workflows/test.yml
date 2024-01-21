@@ -10,7 +10,7 @@ jobs:
     steps:
       - run: |
             # use bash variable expression to get the substring
-             export GIT_PR_SHA="${{ github.sha }}"
+             GIT_PR_SHA="${{ github.sha }}"
              echo "${GIT_PR_SHA}"
 
             
