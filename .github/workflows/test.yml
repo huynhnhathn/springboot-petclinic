@@ -10,5 +10,9 @@ jobs:
     env:
       MY_NAME: "Mona The Octocat"
     steps:
+      - name: no-bash-version
+        id: no-bash-version
+        run: echo "$MY_NAME"
       - name: bash-version
+        id: bash-version
         run: echo "::add-mask::$MY_NAME"
