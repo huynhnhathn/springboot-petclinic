@@ -1,20 +1,29 @@
 name: test
 
 on:
-  workflow_call:
-    inputs:
-      username:
-        description: 'A username passed from the caller workflow'
-        default: 'john-doe'
-        required: false
-        type: string
-
+ push:
+   branches:
+     - huynhnhathn-patch-1
 jobs:
-  print-username:
+   job1:
     runs-on: ubuntu-latest
-
+    outputs:
+      selectedColor: ${{ steps.color-selector.outputs.SELECTED_COLOR }}
     steps:
-      - name: Print the input name to STDOUT
-        run: echo The username is ${{ inputs.username }}
-    
-        
+       - name: Set color
+         id: color-selector
+         run: echo "SELECTED_COLOR=green" >> "$GITHUB_OUTPUT"
+         
+       - name: Get color
+         id: step_two
+         env:
+          SELECTED_COLOR: ${{ steps.color-selector.outputs.SELECTED_COLOR }}
+         run: echo "The selected color is $SELECTED_COLOR"
+   job2:
+    needs: job1
+    runs-on: ubuntu-latest
+    steps:
+          - if: ${{ needs.job1.outputs.selectedColor == 'green'}}
+            run: echo "The job 1 selected color is ${{ needs.job1.outputs.selectedColor }}"
+          - if: ${{ needs.job1.outputs.selectedColor != 'green'}}
+            run: echo "The job 1 selected not color is green "
