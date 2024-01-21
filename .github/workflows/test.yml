@@ -3,7 +3,7 @@ name: build
 on:
  push:
    branches:
-     - main
+     - huynhnhathn-patch-1
 jobs:
   build_qa:
      runs-on: ubuntu-latest
