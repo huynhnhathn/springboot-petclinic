@@ -18,5 +18,4 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - run: |
-          matrix = ${{ fromJSON(needs.job1.outputs.matrix }}
-          echo $matrix.include[0].project
+          echo ${{ fromJSON(needs.job1.outputs.matrix }}
