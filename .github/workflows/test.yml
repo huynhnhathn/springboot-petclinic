@@ -7,12 +7,12 @@ on:
 jobs:
    job1:
     runs-on: ubuntu-latest
-    env:
-      MY_NAME: "Mona The Octocat"
     steps:
-      - name: no-bash-version
-        id: no-bash-version
-        run: echo "$MY_NAME"
-      - name: bash-version
-        id: bash-version
-        run: echo "::add-mask::$MY_NAME"
+      - name: Set the value
+        id: step_one
+        run: |
+          echo "action_state=yellow" >> "$GITHUB_ENV"
+      - name: Use the value
+        id: step_two
+        run: |
+         printf '%s\n' "$action_state" # This will output 'yellow'
